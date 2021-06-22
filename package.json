@@ -1,0 +1,19 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Code refactor to make a basic note (node) taker app work. Week 11 homework for Northwestern Coding Boot Camp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdono100/Notes-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdono100/Notes-App/issues"
+  },
+  "homepage": "https://github.com/jdono100/Notes-App#readme"
+}
