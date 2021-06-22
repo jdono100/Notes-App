@@ -50,6 +50,7 @@ const deleteNote = (id) =>
         },
     });
 
+
 const renderActiveNote = () => {
     hide(saveNoteBtn);
 
@@ -124,6 +125,7 @@ const renderNoteList = async (notes) => {
     }
 
     let noteListItems = [];
+    console.log(jsonNotes);
 
     // Returns HTML element with or without a delete button
     const createLi = (text, delBtn = true) => {

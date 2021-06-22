@@ -6,15 +6,15 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.join());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', (res) => res.sendFile(path.join(__dirname, '/../public/index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
 
-app.get('/notes', (res) => res.sendFile(path.join(__dirname, '../public/notes.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
 
-app.get('/api/notes', (res) => {
-    fs.readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+app.get('/api/notes', (req, res) => {
+    fs.readFile(path.join(__dirname, '/db/db.json'), 'utf-8', (err, data) => {
         if (err) throw err;
         res.send(data);
     });
@@ -22,7 +22,7 @@ app.get('/api/notes', (res) => {
 
 app.post('/api/notes', (req, res) => {
     let newNote = req.body;
-    fs.readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+    fs.readFile(path.join(__dirname, '/db/db.json'), 'utf-8', (err, data) => {
         if (err) throw err;
 
         const noteList = JSON.parse(data);
@@ -31,7 +31,7 @@ app.post('/api/notes', (req, res) => {
         for(i = 0; i < noteList.length; i++) {
             noteList[i].id = i;
         }
-        fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(noteList), (err) => {
+        fs.writeFile(path.join(__dirname, '/db/db.json'), JSON.stringify(noteList), (err) => {
             if (err) throw err;
         })
     });
@@ -40,14 +40,17 @@ app.post('/api/notes', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
     const id = req.params.id;
-    fs.readFile(path.join(__dirname, '../db/db.json'), 'utf-8', (err, data) => {
+    fs.readFile(path.join(__dirname, '/db/db.json'), 'utf-8', (err, data) => {
         if (err) throw err;
+
         let noteList = JSON.parse(data);
         noteList.splice(id, 1);
+
         for (i = 0; i < noteList.length; i++) {
             noteList[i].id = i;
         }
-        fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(noteList), (err) => {
+
+        fs.writeFile(path.join(__dirname, '/db/db.json'), JSON.stringify(noteList), (err) => {
             if (err) throw err;
         })
     });

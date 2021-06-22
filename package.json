@@ -4,7 +4,8 @@
   "description": "Code refactor to make a basic note (node) taker app work. Week 11 homework for Northwestern Coding Boot Camp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
