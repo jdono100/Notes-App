@@ -54,7 +54,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
     hide(saveNoteBtn);
 
-    if (activeNote.id) {
+    if (activeNote.id || activeNote.id === 0) {
         noteTitle.setAttribute('readonly', true);
         noteText.setAttribute('readonly', true);
         noteTitle.value = activeNote.title;
